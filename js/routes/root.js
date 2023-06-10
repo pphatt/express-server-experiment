@@ -9,7 +9,6 @@ const path_1 = __importDefault(require("path"));
 const router = express_1.default.Router();
 exports.router = router;
 router.get("/", (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, "../", "views", "index.html"));
-    // console.log(__dirname)
+    res.sendFile(path_1.default.join(__dirname, "../../", "views", "index.html"));
 });
 //# sourceMappingURL=root.js.map
