@@ -7,7 +7,6 @@ import { reqLog } from "./middleware/error/reqLog";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import corsOptions from "./config/corsOption"
-import corsOption from "./config/corsOption"
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -16,7 +15,7 @@ app.use(reqLog);
 
 app.use(express.json());
 
-app.use(cors(corsOption))
+app.use(cors(corsOptions))
 
 app.use(cookieParser())
 
