@@ -1,13 +1,13 @@
-import mongoose, { SchemaTypes } from "mongoose"
+import mongoose, { Schema } from "mongoose"
 
 const shopOrderDetailsSchema = new mongoose.Schema({
   shopOrderID: {
-    type: SchemaTypes.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "ShopOrder",
     required: true
   },
   productID: {
-    type: SchemaTypes.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Product",
     required: true
   },

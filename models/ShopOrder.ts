@@ -1,8 +1,8 @@
-import mongoose, { SchemaTypes } from "mongoose"
+import mongoose, { Schema } from "mongoose"
 
 const shopOrderSchema = new mongoose.Schema({
   userID: {
-    type: SchemaTypes.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "User",
     required: true
   },
@@ -21,17 +21,17 @@ const shopOrderSchema = new mongoose.Schema({
     type: Date,
   },
   paymentMethod: {
-    type: SchemaTypes.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "PaymentMethod",
     required: true
   },
   shippingMethod: {
-    type: SchemaTypes.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "ShippingMethod",
     required: true
   },
   orderStatus: {
-    type: SchemaTypes.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "OrderStatus",
     required: true
   }

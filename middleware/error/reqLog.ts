@@ -1,13 +1,9 @@
-import { handleLog } from "./handleLog"
-import {Request, Response, NextFunction} from "express";
+import { handleLog } from "./handleLog";
+import { Request, Response, NextFunction } from "express";
 
-interface ILogger {
-  req: Request;
-  res: Response;
-  next: NextFunction;
-}
+type RequestLogType = (req: Request, res: Response, next: NextFunction) => any;
 
-export const reqLog = (req: Request, res: Response, next: NextFunction) => {
-  handleLog(`${req.method}\t${req.url}\t${req.headers.origin}`, 'reqLog.log')
-  next()
+export const reqLog: RequestLogType = (req, res, next) => {
+  handleLog(`${req.method}\t${req.url}\t${req.headers.origin}`, "reqLog.log");
+  next();
 };

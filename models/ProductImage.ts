@@ -1,8 +1,8 @@
-import mongoose, {SchemaTypes} from "mongoose"
+import mongoose, { Schema } from "mongoose"
 
 const productImageSchema = new mongoose.Schema({
   productID: {
-    type: SchemaTypes.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Product",
     required: true
   },

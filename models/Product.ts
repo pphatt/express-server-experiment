@@ -1,4 +1,4 @@
-import mongoose, { SchemaTypes } from "mongoose"
+import mongoose, { Schema } from "mongoose"
 
 const productSchema = new mongoose.Schema({
   productName: {
@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     maxLength: 100
   },
   category_id: {
-    type: SchemaTypes.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Category",
     required: true
   },
