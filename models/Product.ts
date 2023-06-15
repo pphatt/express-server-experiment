@@ -7,11 +7,11 @@ const productSchema = new mongoose.Schema({
     minLength: 5,
     maxLength: 100
   },
-  category_id: {
-    type: Schema.Types.ObjectId,
-    ref: "Category",
-    required: true
-  },
+  // category_id: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Category",
+  //   required: true
+  // },
   description: {
     type: String,
     maxLength: 255

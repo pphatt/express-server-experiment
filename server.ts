@@ -2,6 +2,7 @@ import express from "express";
 import process from "process";
 import path from "path";
 import { router } from "./routes/root";
+import {productRouter} from "./routes/product"
 import errorHandler from "./middleware/error/errorHandling";
 import { reqLog } from "./middleware/error/reqLog";
 import cookieParser from "cookie-parser";
@@ -29,10 +30,13 @@ app.use("/", express.static(path.join(__dirname, "..", "public")));
 
 app.use("/", router);
 
+app.use("/products", productRouter)
+
 app.use(errorHandler);
 
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB")
+
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
