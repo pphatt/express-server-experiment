@@ -19,7 +19,7 @@ const getProducts = expressAsyncHandler(async (req, res) => {
 // @route POST /product
 // @access Private
 const addProduct = expressAsyncHandler(async (req, res) => {
-  const { name, price } = req.body;
+  const { name, price, image } = req.body;
 
   if (!name || !price) {
     res.status(404).json({ message: "All fields are required"})
@@ -33,7 +33,7 @@ const addProduct = expressAsyncHandler(async (req, res) => {
     return
   }
 
-  const add = await Product.create({ productName: name, price });
+  const add = await Product.create({ productName: name, price, image });
 
   if (add) {
     res.status(201).json({ message: `New product ${name} was added` });
