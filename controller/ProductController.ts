@@ -5,7 +5,8 @@ import expressAsyncHandler from "express-async-handler";
 // @route GET /product
 // @access Private
 const getProducts = expressAsyncHandler(async (req, res) => {
-  const products = await Product.find().lean();
+  const page = req.query.page as string
+  const products = await Product.find().limit(parseInt(page) * 10).lean();
   console.log(req.query)
 
   if (!products.length) {
