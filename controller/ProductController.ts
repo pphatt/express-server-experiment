@@ -6,6 +6,7 @@ import expressAsyncHandler from "express-async-handler";
 // @access Private
 const getProducts = expressAsyncHandler(async (req, res) => {
   const products = await Product.find().lean();
+  console.log(req.query)
 
   if (!products.length) {
     res.status(400).json({ message: "No products was found" });
