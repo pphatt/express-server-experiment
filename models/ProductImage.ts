@@ -7,7 +7,7 @@ const productImageSchema = new mongoose.Schema({
     required: true
   },
   productImage: {
-    type: Blob,
+    type: Buffer,
     required: true
   }
 })

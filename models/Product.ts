@@ -8,16 +8,18 @@ const productSchema = new mongoose.Schema(
       minLength: 5,
       maxLength: 100,
     },
-    image: {
-      // data: Buffer,
-      // contentType: String
+    image: [{
       type: Buffer,
+      required: true
+    }],
+    manufacturer: {
+      type: String,
+      required: true
     },
-    // category_id: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "Category",
-    //   required: true
-    // },
+    scale: {
+      type: String,
+      required: true
+    },
     description: {
       type: String,
       maxLength: 255,
