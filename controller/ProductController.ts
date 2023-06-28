@@ -6,7 +6,7 @@ import expressAsyncHandler from "express-async-handler";
 // @access Private
 const getProducts = expressAsyncHandler(async (req, res) => {
   const page = req.query.page as string
-  const products = await Product.find().limit(parseInt(page) * 10).lean();
+  const products = await Product.find().limit(parseInt(page) * 4).skip((parseInt(page) - 1) * 4).lean();
   console.log(req.query)
 
   if (!products.length) {
@@ -21,21 +21,21 @@ const getProducts = expressAsyncHandler(async (req, res) => {
 // @route POST /product
 // @access Private
 const addProduct = expressAsyncHandler(async (req, res) => {
-  const { name, price, manufacturer, scale, image } = req.body;
+  const { name, price, manufacturer, scale, image, state } = req.body;
 
-  if (!name || !price || !manufacturer || !scale || !image) {
+  if (!name || !price || !manufacturer || !scale || !image || !state) {
     res.status(404).json({ message: "All fields are required"})
     return
   }
 
   const product = await Product.findOne({ productName: name }).lean().exec();
 
-  if (product?.productName === name) {
+  if (product?.name === name) {
     res.status(400).json({ message: "Product already exists"})
     return
   }
 
-  const add = await Product.create({ productName: name, price, image, manufacturer, scale });
+  const add = await Product.create({ name, price, image, manufacturer, scale, state });
 
   if (add) {
     res.status(201).json({ message: `New product ${name} was added`, _id: add._id });
@@ -70,7 +70,7 @@ const editProduct = expressAsyncHandler(async (req, res) => {
     return;
   }
 
-  product.productName = name;
+  product.name = name;
   product.price = price;
 
   const update = await product.save();
@@ -96,7 +96,7 @@ const deleteProduct = expressAsyncHandler(async (req, res) => {
   }
 
   const deletion = await product.deleteOne();
-  res.json({ message: `${product.productName} was deleted` });
+  res.json({ message: `${product.name} was deleted` });
 });
 
 export { getProducts, addProduct, editProduct, deleteProduct };

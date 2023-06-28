@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
-    productName: {
+    name: {
       type: String,
       required: true,
       minLength: 5,
@@ -28,9 +28,9 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    active: {
-      type: Boolean,
-      default: true,
+    state: {
+      type: String,
+      required: true
     },
   },
   { timestamps: true }
