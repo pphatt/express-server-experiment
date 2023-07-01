@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "compiler:ts": "tsc -w",
-    "start": "node server",
+    "start": "node dist/server",
     "dev": "nodemon server"
   },
   "keywords": [],
